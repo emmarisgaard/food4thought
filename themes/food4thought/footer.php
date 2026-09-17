@@ -2,7 +2,7 @@
 
 		<h1 class="logoFooter">
 
-			<a href="index.html">
+			<a href="<?php echo home_url(); ?>">
 				FOOD4THOUGHT
 			</a>
 
@@ -35,19 +35,19 @@
 		<ul class="footerNav">
 
 			<li>
-				<a href="allRecipes.html">
+				<a href="<?php echo get_post_type_archive_link('recipe'); ?>">
 					Recipes
 				</a>
 			</li>
 
 			<li>
-				<a href="#">
+				<a href="<?php echo get_post_type_archive_link('story'); ?>">
 					Foodstories & tips
 				</a>
 			</li>
 
 			<li>
-				<a href="#">
+				<a href="<?php echo get_post_type_archive_link('tool'); ?>">
 					Tools & Recommendations
 				</a>
 			</li>
