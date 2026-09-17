@@ -17,18 +17,46 @@
 
 <body>
 
+<header>
 
-	<header>
-		<h1 class="logo"><a href="index.html">FOOD4THOUGHT</a></h1>
+		<h1 class="logo">
+			<a href="index.html">FOOD4THOUGHT</a>
+		</h1>
+
 		<ul class="globalNav">
-			<li><a href="allRecipes.html">Recipes</a></li>
-			<li><a href="#">Tools & <br>
-					Recommendations</a></li>
-			<li><a href="#">Foodstories <br>& Tips</a></li>
+			<li>
+				<a href="allRecipes.html">Recipes</a>
+			</li>
+
+			<li>
+				<a href="allTools.html">
+					Tools & <br>
+					Reviews
+				</a>
+			</li>
+
+			<li>
+				<a href="#">
+					Foodstories <br>
+					& Tips
+				</a>
+			</li>
 		</ul>
+
 		<div class="loginSearchCircles">
-			<div class="headerSearch"><i class="fa-solid fa-magnifying-glass"></i></div>
-			<div class="login"><i class="fa-regular fa-user"></i></div>
+
+			<a href="#">
+				<div class="headerSearch">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</div>
+			</a>
+
+			<a href="#">
+				<div class="login">
+					<i class="fa-regular fa-user"></i>
+				</div>
+			</a>
+
 		</div>
 
 	</header>
