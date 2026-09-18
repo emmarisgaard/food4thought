@@ -23,11 +23,6 @@
 					<label>Meal Type</label>
 
 					<label>
-						<input type="checkbox" name="mealType" value="all">
-						All
-					</label>
-
-					<label>
 						<input type="checkbox" name="mealType" value="breakfast" checked>
 						Breakfast
 					</label>
@@ -50,6 +45,10 @@
 						<input type="checkbox" name="mealType" value="snack">
 						Snack
 					</label>
+					<label>
+						<input type="checkbox" name="mealType" value="bread">
+						Bread
+					</label>
 
 				</div>
 
@@ -59,15 +58,14 @@
 					<label>Allergies</label>
 
 					<label>
-						<input type="checkbox" name="allergies" value="all">
-						All
+						<input type="checkbox" name="allergies" value="gluten" checked>
+						Gluten-free
 					</label>
 
 					<label>
-						<input type="checkbox" name="allergies" value="gluten" checked>
-						Gluten Free
+						<input type="checkbox" name="allergies" value="lactose">
+						Lactose-free
 					</label>
-
 					<label>
 						<input type="checkbox" name="allergies" value="dairy">
 						Dairy-free
@@ -79,8 +77,8 @@
 					</label>
 
 					<label>
-						<input type="checkbox" name="allergies" value="egg">
-						Egg-free
+						<input type="checkbox" name="allergies" value="shellfish">
+						Shellfish-free
 					</label>
 
 				</div>
@@ -89,11 +87,6 @@
 				<div class="recipeFilter">
 
 					<label>Preferences</label>
-
-					<label>
-						<input type="checkbox" name="preferences" value="all">
-						All
-					</label>
 
 					<label>
 						<input type="checkbox" name="preferences" value="vegetarian">
@@ -106,8 +99,21 @@
 					</label>
 
 					<label>
+						<input type="checkbox" name="preferences" value="pescetarian">
+						Pescetarian
+					</label>
+
+					<label>
+						<input type="checkbox" name="preferences" value="keto">
+						Keto
+					</label>
+					<label>
+						<input type="checkbox" name="preferences" value="low-carb">
+						Low-carb
+					</label>
+					<label>
 						<input type="checkbox" name="preferences" value="high-protein">
-						High Protein
+						High-protein
 					</label>
 
 				</div>
@@ -153,7 +159,7 @@
 						<p>X Breakfast</p>
 					</div>
 
-					<p>(Showing 8 results)</p>
+					<p>(Showing 9 results)</p>
 
 
 				</div>

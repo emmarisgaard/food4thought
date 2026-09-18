@@ -15,7 +15,7 @@
 
         ?>
 
-
+<main>
         <section class="recipeHero">
 
             <section class="singleRecipeInfo">
@@ -36,10 +36,8 @@
                         <div class="singleRecipeName">
 
                             <i class="fa-regular fa-circle-user"></i>
-
-                            <p>
-                                <?php the_author(); ?>
-                            </p>
+                            <a href="#"><?php the_author(); ?></a>
+                            
 
                             <div class="profileHats">
 
@@ -152,6 +150,7 @@
                         src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
                         alt="<?php the_title(); ?>"
                     >
+                    <p>Copyright: <a href="https://www.bbc.co.uk/food/recipes">www.bbc.co.uk/food/recipes</a></p>
 
                 </div>
 
@@ -681,7 +680,7 @@
             </section>
 
         </section>
-
+                </main>
     <?php endwhile; ?>
 
 <?php endif; ?>

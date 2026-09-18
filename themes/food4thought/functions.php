@@ -5,6 +5,14 @@ function food4thought_files() {
         'food4thought_main_styles',
         get_theme_file_uri('/style.css')
     );
+
+    wp_enqueue_script(
+        'food4thought_js',
+        get_theme_file_uri('/app.js'),
+        array(),
+        null,
+        true
+    );
 }
 
 add_action('wp_enqueue_scripts', 'food4thought_files');

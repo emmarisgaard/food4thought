@@ -12,6 +12,12 @@ body {
     background-color: var(--backgroundColour);
 }
 
+main {
+    max-width: 1800px;
+    margin: 0 auto;
+
+}
+
 p {
     margin: 0;
     line-height: 150%;
@@ -570,6 +576,7 @@ footer {
 }
 
 /* SINGLE RECIPE */
+
 .singleRecipeStars {
     display: flex;
     flex-direction: row;
@@ -1081,6 +1088,11 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: var(--largeGap);
 
+    a {
+        color: var(--darkBlue);
+
+    }
+
 
     .profileHats {
         display: flex;
@@ -1145,6 +1157,8 @@ footer {
         display: flex;
         align-items: center;
         gap: var(--mediumGap);
+
+
     }
 
     .singleToolProfile,
