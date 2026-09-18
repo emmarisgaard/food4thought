@@ -40,7 +40,7 @@
 			href="<?php echo get_post_type_archive_link('tool'); ?>"
 			<?php if(get_post_type() == 'tool') echo 'class="active"'; ?>
 		>
-			Tools & <br>
+			Tool <br>
 			Reviews
 		</a>
 	</li>

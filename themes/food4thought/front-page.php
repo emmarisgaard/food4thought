@@ -5,7 +5,7 @@
 
 	<video autoplay muted loop playsinline>
 
-		<source src="<?php echo get_theme_file_uri('/img/front-page-hero.mp4'); ?>" type="video/mp4">
+		<source src="<?php echo get_theme_file_uri('/img/front-page-hero-video.mp4'); ?>" type="video/mp4">
 
 	</video>
 

@@ -6,7 +6,7 @@
 		<h1>All Recipes</h1>
 
 		<div class="headerButtons">
-			<input type="search">
+			<input type="search" placeholder=" Search here...">
 			<button>+ Add Recipe</button>
 		</div>
 

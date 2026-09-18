@@ -10,15 +10,15 @@
     >
 
     <h1>
-        Tools & Recommendations
+        Tools Reviews
     </h1>
 
     <div class="headerButtons">
 
-        <input type="search">
+        <input type="search" placeholder=" Search here...">
 
         <button>
-            + Add Tool or Recommendation
+            + Add Tool review
         </button>
 
     </div>
