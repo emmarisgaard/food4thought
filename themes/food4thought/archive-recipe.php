@@ -1,4 +1,7 @@
+<!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
+
+<!-- Header/hero section -->
 <section class="headerImageSection">
 
 		<img src="<?php echo get_theme_file_uri('/img/snack-circle.png'); ?>" alt="" class="headerImage">
@@ -12,8 +15,10 @@
 
 	</section>
 
+	<!-- Main indhold section -->
 	<div class="allRecipesLayout">
 
+	<!-- Aside med filter. Accordion med js -->
 		<aside>
 
 			<div class="recipeFilters">
@@ -144,7 +149,7 @@
 
 		</aside>
 
-
+<!-- Recipes section -->
 		<section class="allRecipesMain">
 
 			<div class="recipeResultsHeader">
@@ -178,23 +183,18 @@
 
 			<div class="allRecipesGrid">
 
+	<!-- Bruger the loop til at hente alle recipes og få dem vist med vores html cards -->
     <?php
 
-    $recipeQuery = new WP_Query(array(
-        'post_type' => 'recipe',
-        'posts_per_page' => -1
-    ));
+        while (have_posts()) {
 
-    if ($recipeQuery->have_posts()) :
+            the_post();
 
-        while ($recipeQuery->have_posts()) :
-
-            $recipeQuery->the_post();
-
+			// Henter acf felt time, så det indsættes i vores html
             $time = get_field('time');
 
     ?>
-
+<!-- For hver recipe laves der et card, som henter oplysninger fra wordpress og indsætter dynamisk -->
         <a href="<?php the_permalink(); ?>" class="recipeCard">
 
             <img
@@ -257,19 +257,7 @@
 
         </a>
 
-    <?php
-
-        endwhile;
-
-        wp_reset_postdata();
-
-    else :
-
-    ?>
-
-        <p>No recipes found.</p>
-
-    <?php endif; ?>
+<?php } ?>
 
 </div>
 		</section>
