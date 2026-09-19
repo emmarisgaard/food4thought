@@ -1,0 +1,6 @@
+Sep 19 2026 14:07:05
+{"Number":2,"Message":"rmdir(C:\\Users\\emmar\\Local Sites\\food4thought\\app\\public\\wp-content\\plugins\\all-in-one-wp-migration\\storage\\px1zosi9cyn4): Directory not empty","File":"C:\\Users\\emmar\\Local Sites\\food4thought\\app\\public\\wp-content\\plugins\\all-in-one-wp-migration\\lib\\vendor\\servmask\\filesystem\\class-ai1wm-directory.php","Line":74}
+
+Sep 19 2026 14:07:05
+{"Number":2,"Message":"filesize(): stat failed for C:\\Users\\emmar\\Local Sites\\food4thought\\app\\public\\wp-content\\plugins\\all-in-one-wp-migration\\storage\\px1zosi9cyn4\\food4thought-local-20260919-140659-h5jsbud0nf2w.wpress","File":"C:\\Users\\emmar\\Local Sites\\food4thought\\app\\public\\wp-content\\plugins\\all-in-one-wp-migration\\lib\\vendor\\servmask\\archiver\\class-ai1wm-archiver.php","Line":287}
+

@@ -84,7 +84,7 @@
 
 					<img
 						class="recipeCardImage"
-						src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+						src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>"
 						alt="<?php the_title(); ?>"
 					>
 
@@ -189,7 +189,7 @@
 
 	<a href="<?php echo get_post_type_archive_link('recipe'); ?>" class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/dinner-circle.jpg'); ?>" alt="Dinner">
+		<img src="<?php echo get_theme_file_uri('/img/dinner-circle.webp'); ?>" alt="Dinner">
 
 		<p>
 			Dinner
@@ -211,7 +211,7 @@
 
 	<a href="<?php echo get_post_type_archive_link('recipe'); ?>" class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/snack-circle.png'); ?>" alt="Snacks">
+		<img src="<?php echo get_theme_file_uri('/img/snack-circle.webp'); ?>" alt="Snacks">
 
 		<p>
 			Snacks
@@ -222,7 +222,7 @@
 
 	<a href="<?php echo get_post_type_archive_link('recipe'); ?>" class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/bread-circle.png'); ?>" alt="Bread">
+		<img src="<?php echo get_theme_file_uri('/img/bread-circle.webp'); ?>" alt="Bread">
 
 		<p>
 			Bread
@@ -273,7 +273,7 @@
 				<a href="<?php the_permalink(); ?>" class="toolCard">
 
 					<img
-						src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+						src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>"
 						alt="<?php the_title(); ?>"
 						class="toolCardImg"
 					>
@@ -380,7 +380,7 @@
 
 	<div class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/knives-circle.png'); ?>" alt="Knives & Cutting">
+		<img src="<?php echo get_theme_file_uri('/img/knives-circle.webp'); ?>" alt="Knives & Cutting">
 
 		<p>
 			Knives & Cutting
@@ -391,7 +391,7 @@
 
 	<div class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/cookware-circle.jpg'); ?>" alt="Cookware">
+		<img src="<?php echo get_theme_file_uri('/img/cookware-circle.webp'); ?>" alt="Cookware">
 
 		<p>
 			Cookware
@@ -413,7 +413,7 @@
 
 	<div class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/baking-circle.jpg'); ?>" alt="Baking & Pastry">
+		<img src="<?php echo get_theme_file_uri('/img/baking-circle.webp'); ?>" alt="Baking & Pastry">
 
 		<p>
 			Baking & Pastry
@@ -424,7 +424,7 @@
 
 	<div class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/essantial-circle.png'); ?>" alt="Kitchen essencials">
+		<img src="<?php echo get_theme_file_uri('/img/essantial-circle.webp'); ?>" alt="Kitchen essencials">
 
 		<p>
 			Kitchen essencials
@@ -435,7 +435,7 @@
 
 	<div class="toolCategori">
 
-		<img src="<?php echo get_theme_file_uri('/img/grill-tools-circle.png'); ?>" alt="Grill & Outdoorcooking">
+		<img src="<?php echo get_theme_file_uri('/img/grill-tools-circle.webp'); ?>" alt="Grill & Outdoorcooking">
 
 		<p>
 			Grill & Outdoorcooking

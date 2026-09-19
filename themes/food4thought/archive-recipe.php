@@ -4,7 +4,7 @@
 <!-- Header/hero section -->
 <section class="headerImageSection">
 
-		<img src="<?php echo get_theme_file_uri('/img/snack-circle.png'); ?>" alt="" class="headerImage">
+		<img src="<?php echo get_theme_file_uri('/img/snack-circle.webp'); ?>" alt="" class="headerImage">
 
 		<h1>All Recipes</h1>
 

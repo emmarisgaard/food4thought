@@ -5,7 +5,7 @@
 <section class="headerImageSection">
 
     <img
-        src="<?php echo get_theme_file_uri('/img/tool-card.png'); ?>"
+        src="<?php echo get_theme_file_uri('/img/tool-card.webp'); ?>"
         alt=""
         class="headerImage"
     >
@@ -32,7 +32,7 @@
 
     <div class="toolCategori">
 
-        <img src="<?php echo get_theme_file_uri('/img/knives-circle.png'); ?>" alt="">
+        <img src="<?php echo get_theme_file_uri('/img/knives-circle.webp'); ?>" alt="">
 
         <p>
             Knives & Cutting
@@ -43,7 +43,7 @@
 
     <div class="toolCategori">
 
-        <img src="<?php echo get_theme_file_uri('/img/cookware-circle.jpg'); ?>" alt="">
+        <img src="<?php echo get_theme_file_uri('/img/cookware-circle.webp'); ?>" alt="">
 
         <p>
             Cookware
@@ -76,7 +76,7 @@
 
     <div class="toolCategori">
 
-        <img src="<?php echo get_theme_file_uri('/img/essantial-circle.png'); ?>" alt="">
+        <img src="<?php echo get_theme_file_uri('/img/essantial-circle.webp'); ?>" alt="">
 
         <p>
             Kitchen Essentials
@@ -87,7 +87,7 @@
 
     <div class="toolCategori">
 
-        <img src="<?php echo get_theme_file_uri('/img/grill-tools-circle.png'); ?>" alt="">
+        <img src="<?php echo get_theme_file_uri('/img/grill-tools-circle.webp'); ?>" alt="">
 
         <p>
             Grill & Outdoor Cooking
@@ -113,7 +113,7 @@
 
 
                 <img
-                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                    src="<?php echo get_the_post_thumbnail_url(get_the_ID()); ?>"
                     alt="<?php the_title(); ?>"
                     class="toolCardImg"
                 >
