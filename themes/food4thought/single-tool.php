@@ -1,454 +1,478 @@
+<!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
 
-<?php if (have_posts()) : ?>
 
-    <?php while (have_posts()) : the_post(); ?>
+<!-- Bruger the loop til at hente tool -->
+<?php
 
-        <?php
-        $review = get_field('review');
-        $introText = get_field('intro_text');
-        $buy = get_field('buy');
-        $mainText = get_field('main_text');
-        ?>
+while (have_posts()) {
 
-        <section class="singleToolInfo">
+    the_post();
 
-            <div class="singleToolDetails">
+    // Henter ACF felterne fra tool
+    $review = get_field('review');
+    $introText = get_field('intro_text');
+    $buy = get_field('buy');
+    $mainText = get_field('main_text');
 
-                <div class="singleToolTitle">
+?>
 
-                    <span class="recommendationBox">
-                        <?php echo $review; ?>
-                    </span>
+<section class="singleToolInfo">
 
-                    <i class="fa-regular fa-square-check"></i>
+    <div class="singleToolDetails">
 
-                    <h1>
-                        <?php the_title(); ?>
-                    </h1>
+        <div class="singleToolTitle">
 
-                </div>
+            <span class="recommendationBox">
+                <?php echo $review; ?>
+            </span>
 
+            <i class="fa-regular fa-square-check"></i>
 
-                <div class="singleToolProfile">
+            <h1>
+                <?php the_title(); ?>
+            </h1>
 
-                    <div class="singleToolName">
-
-                        <i class="fa-regular fa-circle-user"></i>
-
-                        <p>
-                            <?php the_author(); ?>
-                        </p>
-
-                        <div class="profileHats">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                        </div>
-
-                    </div>
+        </div>
 
 
-                    <div class="singleToolDate">
+        <div class="singleToolProfile">
 
-                        <i class="fa-regular fa-calendar"></i>
+            <div class="singleToolName">
 
-                        <p>
-                            <?php echo get_the_date('d/m/Y'); ?>
-                        </p>
+                <i class="fa-regular fa-circle-user"></i>
 
-                    </div>
+                <p>
+                    <?php the_author(); ?>
+                </p>
+
+                <div class="profileHats">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
 
                 </div>
 
-
-                <div class="singleToolLikesNComments">
-
-                    <div>
-                        <i class="fa-regular fa-heart"></i>
-                        <p>100 Likes</p>
-                    </div>
-
-                    <a href="#comments">
-                        15 Comments
-                    </a>
-
-                </div>
+            </div>
 
 
-                <div class="singleToolShortDescription">
+            <div class="singleToolDate">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                <p>
+                    <?php echo get_the_date('d/m/Y'); ?>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="singleToolLikesNComments">
+
+            <div class="line">
+                <i class="fa-regular fa-heart"></i>  
+                <p>100 Likes</p>
+            </div>
+
+            <a href="#comments">
+                15 Comments
+            </a>
+         
+
+        </div>
+
+
+        <div class="singleToolShortDescription">
+
+            <p>
+                <?php echo $introText; ?>
+            </p>
+
+        </div>
+
+
+        <!-- Viser kun købsinformation hvis buy feltet er udfyldt -->
+        <?php if ($buy) { ?>
+
+            <div class="singleToolPrice">
+
+                <div>
 
                     <p>
-                        <?php echo $introText; ?>
+                        Bought at
+                    </p>
+
+                    <p class="singleToolColored">
+                        <?php echo $buy['shop']; ?>
+                    </p>
+
+                    <p>
+                        for
+                    </p>
+
+                    <p class="singleToolColored">
+                        <?php echo $buy['price']; ?> $
                     </p>
 
                 </div>
 
-
-                <?php if (!empty($buy)) : ?>
-
-                    <div class="singleToolPrice">
-
-                        <div>
-
-                            <p>
-                                Bought at
-                            </p>
-
-                            <p class="singleToolColored">
-                                <?php echo $buy['shop']; ?>
-                            </p>
-
-                            <p>
-                                for
-                            </p>
-
-                            <p class="singleToolColored">
-                                <?php echo $buy['price']; ?> $
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                <?php endif; ?>
-
-
-                <div class="singleToolIcons">
-
-                    <i class="fa-regular fa-bookmark"></i>
-                    <i class="fa-solid fa-share"></i>
-                    <i class="fa-solid fa-print"></i>
-
-                </div>
-
             </div>
 
-
-            <img
-                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
-                alt="<?php the_title(); ?>"
-            >
-
-        </section>
+        <?php } ?>
 
 
-        <section class="singleToolDescription">
+        <div class="singleToolIcons">
 
-            <p class="tekstContainer">
-
-                <?php echo $mainText; ?>
-
-            </p>
-
-        </section>
-
-
-        <div class="singleRecipeHr">
-            <hr>
+            <i class="fa-regular fa-bookmark"></i>
+            <i class="fa-solid fa-share"></i>
+            <i class="fa-solid fa-print"></i>
+   
+            <div class="line">
+           
+                   <img class= "ai-hand" src="<?php echo get_theme_file_uri('/img/ai.jpg'); ?>" alt="">
+                   <p>Written by AI</p>
+               </div>
+            
         </div>
 
-
-        <section class="relatedTools">
-
-            <div class="relatedSectionHeader">
-
-                <h2>
-                    Related Tools
-                </h2>
-
-                <a href="<?php echo get_post_type_archive_link('tool'); ?>" class="seeAllButton">
-                    See all tools
-                </a>
-
-            </div>
+    </div>
 
 
-            <div class="relatedToolCards">
+    <img
+    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+    alt="<?php the_title(); ?>"
+    >
+  
+    
+</section>
 
-                <?php
-                $relatedTools = new WP_Query(array(
-                    'post_type' => 'tool',
-                    'posts_per_page' => 4,
-                    'post__not_in' => array(get_the_ID())
-                ));
 
-                if ($relatedTools->have_posts()) :
-                    while ($relatedTools->have_posts()) :
-                        $relatedTools->the_post();
-                ?>
+<section class="singleToolDescription">
 
-                        <a href="<?php the_permalink(); ?>" class="toolCard">
+    <p class="tekstContainer">
 
-                            <img
-                                src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
-                                alt="<?php the_title(); ?>"
-                                class="toolCardImg"
-                            >
+        <?php echo $mainText; ?>
 
-                            <div class="toolCardInfo">
+    </p>
 
-                                <div>
+</section>
 
-                                    <h1>
-                                        <i class="fa-regular fa-square-check"></i>
-                                        <?php the_title(); ?>
-                                    </h1>
 
-                                    <div class="toolCardProfile">
+<div class="singleRecipeHr">
+    <hr>
+</div>
 
-                                        <p>
-                                            By <?php the_author(); ?>
-                                        </p>
 
-                                        <div class="profileHats">
+<!-- Related tools -->
+<section class="relatedTools">
 
-                                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+    <div class="relatedSectionHeader">
 
-                                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+        <h2>
+            Related Tools
+        </h2>
 
-                                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+        <a href="<?php echo get_post_type_archive_link('tool'); ?>" class="seeAllButton">
+            See all tools
+        </a>
 
-                                        </div>
+    </div>
 
-                                    </div>
 
-                                </div>
+    <div class="relatedToolCards">
 
-                                <hr>
+        <!-- Bruger custom query til at hente related tools -->
+        <?php
 
-                                <div class="toolCardButtons">
+        $relatedTools = new WP_Query(array(
+            'post_type' => 'tool',
+            'posts_per_page' => 4,
+            'post__not_in' => array(get_the_ID())
+        ));
 
-                                    <div class="saveNlike">
+        while ($relatedTools->have_posts()) {
 
-                                        <i class="fa-regular fa-bookmark"></i>
+            $relatedTools->the_post();
 
-                                        <div class="totalLikes">
+        ?>
 
-                                            <i class="fa-regular fa-heart"></i>
+            <a href="<?php the_permalink(); ?>" class="toolCard">
 
-                                            <p>
-                                                1000 likes
-                                            </p>
+                <img
+                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                    alt="<?php the_title(); ?>"
+                    class="toolCardImg"
+                >
 
-                                        </div>
+                <div class="toolCardInfo">
 
-                                    </div>
+                    <div>
 
-                                    <span>
-                                        Go to tool
-                                    </span>
+                        <h1>
+                            <i class="fa-regular fa-square-check"></i>
+                            <?php the_title(); ?>
+                        </h1>
 
-                                </div>
+                        <div class="toolCardProfile">
+
+                            <p>
+                                By <?php the_author(); ?>
+                            </p>
+
+                            <div class="profileHats">
+
+                                <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                                <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                                <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
 
                             </div>
 
-                        </a>
+                        </div>
 
-                <?php
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
+                    </div>
+
+                    <hr>
+
+                    <div class="toolCardButtons">
+
+                        <div class="saveNlike">
+
+                            <i class="fa-regular fa-bookmark"></i>
+
+                            <div class="totalLikes">
+
+                                <i class="fa-regular fa-heart"></i>
+
+                                <p>
+                                    1000 likes
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span>
+                            Go to tool
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        <?php } ?>
+
+        <?php
+        // Nulstiller post data efter custom query
+        wp_reset_postdata();
+        ?>
+
+    </div>
+
+</section>
+
+
+<div class="singleRecipeHr">
+    <hr>
+</div>
+
+
+<section class="commentSection" id="comments">
+
+    <div class="commentsHeader">
+
+        <i class="fa-regular fa-message"></i>
+
+        <h2>
+            Comments
+        </h2>
+
+        <p>
+            15 Comments
+        </p>
+
+    </div>
+
+
+    <div class="commentArea">
+
+        <p>
+            Max 350 characters
+        </p>
+
+        <div class="commentInput">
+
+            <textarea maxlength="350"></textarea>
+
+            <button>
+                Comment
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="otherComments">
+
+        <div class="otherComment">
+
+            <div class="toolCardProfile">
+
+                <i class="fa-regular fa-circle-user"></i>
+
+                <p>
+                    By Emma Risgaard
+                </p>
+
+                <div class="profileHats">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                </div>
 
             </div>
 
-        </section>
+            <div class="timeStamp">
 
+                <p>
+                    20/09-2026, 16:03
+                </p>
 
-        <div class="singleRecipeHr">
+            </div>
+
             <hr>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                consequatur sequi dolore recusandae. Error natus repudiandae
+                velit et enim ullam nam excepturi nulla.
+            </p>
+
+            <p class="reply">
+                Reply
+            </p>
+
         </div>
 
 
-        <section class="commentSection" id="comments">
+        <div class="otherComment">
 
-            <div class="commentsHeader">
+            <div class="toolCardProfile">
 
-                <i class="fa-regular fa-message"></i>
-
-                <h2>
-                    Comments
-                </h2>
+                <i class="fa-regular fa-circle-user"></i>
 
                 <p>
-                    15 Comments
+                    By Emma Risgaard
+                </p>
+
+                <div class="profileHats">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="timeStamp">
+
+                <p>
+                    20/09-2026, 16:03
                 </p>
 
             </div>
 
+            <hr>
 
-            <div class="commentArea">
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                consequatur sequi dolore recusandae. Error natus repudiandae
+                velit et enim ullam nam excepturi nulla.
+            </p>
+
+            <p class="reply">
+                Reply
+            </p>
+
+        </div>
+
+
+        <div class="otherComment">
+
+            <div class="toolCardProfile">
+
+                <i class="fa-regular fa-circle-user"></i>
 
                 <p>
-                    Max 350 characters
+                    By Emma Risgaard
                 </p>
 
-                <div class="commentInput">
+                <div class="profileHats">
 
-                    <textarea maxlength="350"></textarea>
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
 
-                    <button>
-                        Comment
-                    </button>
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
 
-                </div>
-
-            </div>
-
-
-            <div class="otherComments">
-
-                <div class="otherComment">
-
-                    <div class="toolCardProfile">
-
-                        <i class="fa-regular fa-circle-user"></i>
-
-                        <p>
-                            By Emma Risgaard
-                        </p>
-
-                        <div class="profileHats">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeStamp">
-
-                        <p>20/09-2026, 16:03</p>
-
-                    </div>
-
-                    <hr>
-
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                        consequatur sequi dolore recusandae. Error natus repudiandae
-                        velit et enim ullam nam excepturi nulla.
-                    </p>
-
-                    <p class="reply">
-                        Reply
-                    </p>
-
-                </div>
-
-
-                <div class="otherComment">
-
-                    <div class="toolCardProfile">
-
-                        <i class="fa-regular fa-circle-user"></i>
-
-                        <p>
-                            By Emma Risgaard
-                        </p>
-
-                        <div class="profileHats">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeStamp">
-
-                        <p>20/09-2026, 16:03</p>
-
-                    </div>
-
-                    <hr>
-
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                        consequatur sequi dolore recusandae. Error natus repudiandae
-                        velit et enim ullam nam excepturi nulla.
-                    </p>
-
-                    <p class="reply">
-                        Reply
-                    </p>
-
-                </div>
-
-
-                <div class="otherComment">
-
-                    <div class="toolCardProfile">
-
-                        <i class="fa-regular fa-circle-user"></i>
-
-                        <p>
-                            By Emma Risgaard
-                        </p>
-
-                        <div class="profileHats">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                            <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
-
-                        </div>
-
-                    </div>
-
-                    <div class="timeStamp">
-
-                        <p>20/09-2026, 16:03</p>
-
-                    </div>
-
-                    <hr>
-
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                        consequatur sequi dolore recusandae. Error natus repudiandae
-                        velit et enim ullam nam excepturi nulla.
-                    </p>
-
-                    <p class="reply">
-                        Reply
-                    </p>
+                    <img class="Recipe-card-icon-cook" src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>" alt="">
 
                 </div>
 
             </div>
 
-
-            <div class="seeMore">
+            <div class="timeStamp">
 
                 <p>
-                    See more...
+                    20/09-2026, 16:03
                 </p>
 
             </div>
 
-        </section>
+            <hr>
 
-    <?php endwhile; ?>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                consequatur sequi dolore recusandae. Error natus repudiandae
+                velit et enim ullam nam excepturi nulla.
+            </p>
 
-<?php endif; ?>
+            <p class="reply">
+                Reply
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="seeMore">
+
+        <p>
+            See more...
+        </p>
+
+    </div>
+
+</section>
+
+<?php } ?>
 
 <?php get_footer(); ?>
