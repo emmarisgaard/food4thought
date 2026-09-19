@@ -1,7 +1,7 @@
 <!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
 
-
+<main>
 <!-- Bruger the loop til at hente tool -->
 <?php
 
@@ -474,5 +474,5 @@ while (have_posts()) {
 </section>
 
 <?php } ?>
-
+</main>
 <?php get_footer(); ?>

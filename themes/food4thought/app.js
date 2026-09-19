@@ -1,3 +1,5 @@
+
+// Javascript til accordion filter (archive-recipes)
 document.querySelectorAll('.recipeFilter').forEach(filter => {
 
     const title = filter.querySelector('label:first-child');

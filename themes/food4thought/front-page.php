@@ -42,6 +42,9 @@
 
 </section>
 
+<!-- Main section -->
+<main>
+
 <!-- Related recipes section -->
 <section class="relatedRecipesSection">
 
@@ -442,5 +445,6 @@
 
 </section>
 
+</main>
 
 <?php get_footer(); ?>

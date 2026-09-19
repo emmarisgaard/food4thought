@@ -16,6 +16,7 @@
 	</section>
 
 	<!-- Main indhold section -->
+	 <main>
 	<div class="allRecipesLayout">
 
 	<!-- Aside med filter. Accordion med js -->
@@ -263,5 +264,6 @@
 		</section>
 
 	</div>
+</main>
 
     <?php get_footer(); ?>

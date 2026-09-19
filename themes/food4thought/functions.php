@@ -14,7 +14,7 @@ function food4thought_files() {
         'food4thought_js',
         get_theme_file_uri('/app.js'),
         array(),
-        null,
+        '1.0',
         true
     );
 }

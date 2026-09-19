@@ -26,6 +26,7 @@
 
 </section>
 
+<main>
 <!-- Tool category circles -->
 <section class="toolCategories">
 
@@ -201,6 +202,7 @@
     <?php } ?>
 
 </section>
+</main>
 
 
 <?php get_footer(); ?>

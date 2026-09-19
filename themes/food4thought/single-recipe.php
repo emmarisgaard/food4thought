@@ -123,9 +123,9 @@ while (have_posts()) {
                                 </p>
                             </div>
 
-                        <?php } ?>
+                        <?php } }?>
 
-                    <?php } ?>
+                    
 
                 </div>
 
@@ -222,9 +222,8 @@ while (have_posts()) {
 
                             </div>
 
-                        <?php } ?>
+                        <?php } } ?>
 
-                    <?php } ?>
 
                 </div>
 
@@ -260,10 +259,7 @@ while (have_posts()) {
                                 <?php echo $instruction; ?>
                             </li>
 
-                        <?php } ?>
-
-                    <?php } ?>
-
+                        <?php } }?>
                 </ol>
 
             </div>
@@ -272,7 +268,7 @@ while (have_posts()) {
 
 
         <!-- Viser kun Tips section hvis der er skrevet et tip -->
-        <?php if (!empty($recipeTip)) { ?>
+        <?php if ($recipeTip) { ?>
 
             <section class="singleRecipeTips">
 
