@@ -1,12 +1,12 @@
+<!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
 
-
+<!-- hero section med video -->
 <section class="frontPageHero">
 
 	<video autoplay muted loop playsinline>
 
 		<source src="<?php echo get_theme_file_uri('/img/front-page-hero-video.mp4'); ?>" type="video/mp4">
-
 	</video>
 
 
@@ -42,7 +42,7 @@
 
 </section>
 
-
+<!-- Related recipes section -->
 <section class="relatedRecipesSection">
 
 	<div class="relatedSectionHeader">
@@ -60,15 +60,21 @@
 
 	<div class="relatedRecipes">
 
+		<!-- Bruger custom query til at hente recipes og få dem vist med vores html cards -->
 		<?php
+
 		$professionalRecipes = new WP_Query(array(
 			'post_type' => 'recipe',
 			'posts_per_page' => 5
 		));
 
-		if ($professionalRecipes->have_posts()) :
-			while ($professionalRecipes->have_posts()) :
-				$professionalRecipes->the_post();
+		while ($professionalRecipes->have_posts()) {
+
+			$professionalRecipes->the_post();
+
+			// Henter acf felt time, så det indsættes i vores html
+			$time = get_field('time');
+
 		?>
 
 				<a href="<?php the_permalink(); ?>" class="recipeCard">
@@ -103,7 +109,7 @@
 
 							<i class="fa-regular fa-clock"></i>
 
-							<span>1 time</span>
+							<span><?php echo $time['total_time']; ?></span>
 
 						</div>
 
@@ -128,9 +134,11 @@
 				</a>
 
 		<?php
-			endwhile;
-			wp_reset_postdata();
-		endif;
+
+		}
+
+		wp_reset_postdata();
+
 		?>
 
 	</div>
@@ -138,6 +146,7 @@
 </section>
 
 
+<!-- Recipe categories section -->
 <div class="circleSectionHeader">
 
 	<h2 class="relatedRecipesTitle">
@@ -226,6 +235,7 @@
 </div>
 
 
+<!-- Tool reviews section -->
 <section class="relatedRecipesSection">
 
 	<div class="relatedSectionHeader">
@@ -243,15 +253,18 @@
 
 	<section class="allToolsToolCards">
 
+		<!-- Bruger custom query til at hente tools og få dem vist med vores html cards -->
 		<?php
+
 		$tools = new WP_Query(array(
 			'post_type' => 'tool',
 			'posts_per_page' => 4
 		));
 
-		if ($tools->have_posts()) :
-			while ($tools->have_posts()) :
-				$tools->the_post();
+		while ($tools->have_posts()) {
+
+			$tools->the_post();
+
 		?>
 
 				<a href="<?php the_permalink(); ?>" class="toolCard">
@@ -334,9 +347,11 @@
 				</a>
 
 		<?php
-			endwhile;
-			wp_reset_postdata();
-		endif;
+
+		}
+
+		wp_reset_postdata();
+
 		?>
 
 	</section>
@@ -344,6 +359,7 @@
 </section>
 
 
+<!-- Tool categories section -->
 <div class="circleSectionHeader">
 
 	<h2 class="relatedRecipesTitle">

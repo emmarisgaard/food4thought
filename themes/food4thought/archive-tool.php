@@ -1,6 +1,7 @@
+<!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
 
-
+<!-- Header/hero section -->
 <section class="headerImageSection">
 
     <img
@@ -25,7 +26,7 @@
 
 </section>
 
-
+<!-- Tool category circles -->
 <section class="toolCategories">
 
     <div class="toolCategori">
@@ -95,21 +96,15 @@
 
 </section>
 
-
+<!-- Tool cards -->
 <section class="allToolsToolCards allToolsPadding">
 
+    <!-- Bruger the loop til at hente alle tools og få dem vist med vores html cards -->
     <?php
 
-    $toolQuery = new WP_Query(array(
-        'post_type' => 'tool',
-        'posts_per_page' => -1
-    ));
+    while (have_posts()) {
 
-    if ($toolQuery->have_posts()) :
-
-        while ($toolQuery->have_posts()) :
-
-            $toolQuery->the_post();
+        the_post();
 
     ?>
 
@@ -203,25 +198,9 @@
 
             </a>
 
-
-    <?php
-
-        endwhile;
-
-        wp_reset_postdata();
-
-    else :
-
-    ?>
-
-        <p>
-            No tools found.
-        </p>
-
-    <?php endif; ?>
+    <?php } ?>
 
 </section>
 
 
 <?php get_footer(); ?>
-
