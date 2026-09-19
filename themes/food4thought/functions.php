@@ -36,3 +36,4 @@ function f4t_features() {
 
 // Kører funktionen når temaet bliver indlæst
 add_action('after_setup_theme', 'f4t_features');
+
