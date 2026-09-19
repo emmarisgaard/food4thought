@@ -1,3 +1,4 @@
+<!-- footer laves med html og indsættes med php -->
 <footer>
 
 		<h1 class="logoFooter">

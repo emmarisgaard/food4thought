@@ -1,277 +1,278 @@
+<!-- Henter header.php og indsætter her -->
 <?php get_header(); ?>
 
-<?php if (have_posts()) : ?>
 
-    <?php while (have_posts()) : the_post(); ?>
+<!-- Bruger the loop til at hente recipe -->
+<?php
 
-        <?php
+while (have_posts()) {
 
-        $time = get_field('time');
-        $ingredients = get_field('ingredients');
-        $instructions = get_field('instructions');
-        $specifications = get_field('specifications');
-        $portionSize = get_field('portion_size');
-        $recipeTip = get_field('recipe_tip');
+    the_post();
 
-        ?>
+    // Henter ACF felterne fra recipe
+    $time = get_field('time');
+    $ingredients = get_field('ingredients');
+    $instructions = get_field('instructions');
+    $specifications = get_field('specifications');
+    $portionSize = get_field('portion_size');
+    $recipeTip = get_field('recipe_tip');
+
+?>
 
 <main>
-        <section class="recipeHero">
 
-            <section class="singleRecipeInfo">
+    <section class="recipeHero">
 
-                <div class="singleRecipeDetails">
+        <section class="singleRecipeInfo">
 
-                    <div class="singleRecipeTitle">
+            <div class="singleRecipeDetails">
 
-                        <h1>
-                            <?php the_title(); ?>
-                        </h1>
+                <div class="singleRecipeTitle">
 
-                    </div>
+                    <h1>
+                        <?php the_title(); ?>
+                    </h1>
+
+                </div>
 
 
-                    <div class="singleRecipeProfile">
+                <div class="singleRecipeProfile">
 
-                        <div class="singleRecipeName">
+                    <div class="singleRecipeName">
 
-                            <i class="fa-regular fa-circle-user"></i>
-                            <a href="#"><?php the_author(); ?></a>
-                            
+                        <i class="fa-regular fa-circle-user"></i>
 
-                            <div class="profileHats">
+                        <a href="#">
+                            <?php the_author(); ?>
+                        </a>
 
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
 
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
+                        <div class="profileHats">
 
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
 
-                            </div>
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
 
                         </div>
 
                     </div>
 
+                </div>
 
-                    <div class="recipeTime">
 
-                        <i class="fa-regular fa-clock"></i>
+                <div class="recipeTime">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <p>
+                        Total time: <?php echo $time['total_time']; ?><br>
+                        Prep time: <?php echo $time['prep_time']; ?> |
+                        Cook time: <?php echo $time['cook_time']; ?>
+                    </p>
+
+                </div>
+
+
+                <div class="singleToolStarsNComments">
+
+                    <div class="singleRecipeStars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
 
                         <p>
-                            Total time: <?php echo $time['total_time']; ?><br>
-                            Prep time: <?php echo $time['prep_time']; ?> |
-                            Cook time: <?php echo $time['cook_time']; ?>
+                            (45 reviews)
                         </p>
 
                     </div>
 
-
-                    <div class="singleToolStarsNComments">
-
-                        <div class="singleRecipeStars">
-
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-
-                            <p>
-                                (45 reviews)
-                            </p>
-
-                        </div>
-
-                        <a href="#comments">
-                            15 Comments
-                        </a>
-
-                    </div>
-
-
-                    <div class="singleRecipeTags">
-
-                        <?php if (!empty($specifications)) : ?>
-
-                            <?php foreach ($specifications as $specificationGroup) : ?>
-
-                                <?php if (is_array($specificationGroup)) : ?>
-
-                                    <?php foreach ($specificationGroup as $tag) : ?>
-
-                                        <?php if (!empty($tag)) : ?>
-
-                                            <div>
-                                                <p>
-                                                    <?php echo $tag; ?>
-                                                </p>
-                                            </div>
-
-                                        <?php endif; ?>
-
-                                    <?php endforeach; ?>
-
-                                <?php endif; ?>
-
-                            <?php endforeach; ?>
-
-                        <?php endif; ?>
-
-                    </div>
-
-
-                    <div class="singleToolIcons">
-
-                        <i class="fa-regular fa-bookmark"></i>
-                        <i class="fa-solid fa-share"></i>
-                        <i class="fa-solid fa-print"></i>
-
-                    </div>
+                    <a href="#comments">
+                        15 Comments
+                    </a>
 
                 </div>
 
 
-                <div>
+                <div class="singleRecipeTags">
 
-                    <img
-                        src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
-                        alt="<?php the_title(); ?>"
-                    >
-                    <p>Copyright: <a href="https://www.bbc.co.uk/food/recipes">www.bbc.co.uk/food/recipes</a></p>
+                    <!-- Looper gennem specifications og viser alle tags -->
+                    <?php foreach ($specifications as $specificationGroup) { ?>
+
+                        <?php foreach ($specificationGroup as $tag) { ?>
+
+                            <div>
+                                <p>
+                                    <?php echo $tag; ?>
+                                </p>
+                            </div>
+
+                        <?php } ?>
+
+                    <?php } ?>
 
                 </div>
 
-            </section>
 
+                <div class="singleToolIcons">
 
-            <div class="singleRecipeHr">
-                <hr>
+                    <i class="fa-regular fa-bookmark"></i>
+                    <i class="fa-solid fa-share"></i>
+                    <i class="fa-solid fa-print"></i>
+
+                </div>
+
             </div>
 
 
-            <section class="singleRecipeIngredientsNInstructions">
+            <div>
+
+                <img
+                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                    alt="<?php the_title(); ?>"
+                >
+
+                <p>
+                    Copyright:
+                    <a href="https://www.bbc.co.uk/food/recipes">
+                        www.bbc.co.uk/food/recipes
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
 
 
-                <div class="singleRecipeIngredients">
-
-                    <h2>
-                        Ingredients
-                    </h2>
+        <div class="singleRecipeHr">
+            <hr>
+        </div>
 
 
-                    <div class="singleRecipePortions">
+        <!-- Ingredients og instructions section -->
+        <section class="singleRecipeIngredientsNInstructions">
 
-                        <div class="singleRecipeMinus">
-                            <i class="fa-solid fa-minus"></i>
-                        </div>
 
-                        <div class="singleRecipePortion">
+            <div class="singleRecipeIngredients">
 
-                            <p>
-                                <?php echo $portionSize; ?> Portions
-                            </p>
+                <h2>
+                    Ingredients
+                </h2>
 
-                        </div>
 
-                        <div class="singleRecipePlus">
-                            <i class="fa-solid fa-plus"></i>
-                        </div>
+                <div class="singleRecipePortions">
 
+                    <div class="singleRecipeMinus">
+                        <i class="fa-solid fa-minus"></i>
                     </div>
 
-
-                    <div class="singleRecipeIngredientList">
-
-                        <?php if (!empty($ingredients)) : ?>
-
-                            <?php foreach ($ingredients as $ingredient) : ?>
-
-                                <?php if (!empty($ingredient['ingredient'])) : ?>
-
-                                    <div class="singleRecipeIngredient">
-
-                                        <input type="checkbox">
-
-                                        <p>
-                                            <?php echo $ingredient['amount']; ?>
-                                        </p>
-
-                                        <p>
-                                            <?php echo $ingredient['unit']; ?>
-                                        </p>
-
-                                        <p>
-                                            <?php echo $ingredient['ingredient']; ?>
-                                        </p>
-
-                                    </div>
-
-                                <?php endif; ?>
-
-                            <?php endforeach; ?>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                </div>
-
-
-                <div class="singleRecipeInstructions">
-
-                    <h2>
-                        Instructions
-                    </h2>
-
-
-                    <div class="singleRecipeCookmode">
-
-                        <i class="fa-solid fa-toggle-on"></i>
+                    <div class="singleRecipePortion">
 
                         <p>
-                            Cookmode ON
+                            <?php echo $portionSize; ?> Portions
                         </p>
 
                     </div>
 
-
-                    <ol>
-
-                        <?php if (!empty($instructions)) : ?>
-
-                            <?php foreach ($instructions as $instruction) : ?>
-
-                                <?php if (!empty($instruction)) : ?>
-
-                                    <li>
-                                        <?php echo $instruction; ?>
-                                    </li>
-
-                                <?php endif; ?>
-
-                            <?php endforeach; ?>
-
-                        <?php endif; ?>
-
-                    </ol>
+                    <div class="singleRecipePlus">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
 
                 </div>
 
-            </section>
 
+                <div class="singleRecipeIngredientList">
+
+                    <!-- Looper gennem ingredients og viser kun dem der er udfyldt -->
+                    <?php foreach ($ingredients as $ingredient) { ?>
+
+                        <?php if ($ingredient['ingredient']) { ?>
+
+                            <div class="singleRecipeIngredient">
+
+                                <input type="checkbox">
+
+                                <p>
+                                    <?php echo $ingredient['amount']; ?>
+                                </p>
+
+                                <p>
+                                    <?php echo $ingredient['unit']; ?>
+                                </p>
+
+                                <p>
+                                    <?php echo $ingredient['ingredient']; ?>
+                                </p>
+
+                            </div>
+
+                        <?php } ?>
+
+                    <?php } ?>
+
+                </div>
+
+            </div>
+
+
+            <div class="singleRecipeInstructions">
+
+                <h2>
+                    Instructions
+                </h2>
+
+
+                <div class="singleRecipeCookmode">
+
+                    <i class="fa-solid fa-toggle-on"></i>
+
+                    <p>
+                        Cookmode ON
+                    </p>
+
+                </div>
+
+
+                <ol>
+
+                    <!-- Looper gennem instructions og viser kun dem der er udfyldt -->
+                    <?php foreach ($instructions as $instruction) { ?>
+
+                        <?php if ($instruction) { ?>
+
+                            <li>
+                                <?php echo $instruction; ?>
+                            </li>
+
+                        <?php } ?>
+
+                    <?php } ?>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- Viser kun Tips section hvis der er skrevet et tip -->
+        <?php if (!empty($recipeTip)) { ?>
 
             <section class="singleRecipeTips">
 
@@ -291,399 +292,396 @@
 
             </section>
 
+        <?php } ?>
 
-            <div class="singleRecipeHr">
-                <hr>
+
+        <div class="singleRecipeHr">
+            <hr>
+        </div>
+
+
+        <section class="singleRecipeRatingSystem">
+
+            <h2>
+                Your Rating
+            </h2>
+
+            <p>
+                Enter your rating of this recipe underneath
+            </p>
+
+            <div class="singleRecipeRatingStars">
+
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+
             </div>
 
+        </section>
 
-            <section class="singleRecipeRatingSystem">
 
-                <h2>
-                    Your Rating
+        <div class="singleRecipeHr">
+            <hr>
+        </div>
+
+
+        <!-- Related recipes -->
+        <section class="relatedRecipesSection">
+
+            <div class="relatedSectionHeader">
+
+                <h2 class="relatedRecipesTitle">
+                    Related Recipes
                 </h2>
 
-                <p>
-                    Enter your rating of this recipe underneath
-                </p>
+                <a
+                    href="<?php echo get_post_type_archive_link('recipe'); ?>"
+                    class="seeAllButton"
+                >
+                    See all recipes
+                </a>
 
-                <div class="singleRecipeRatingStars">
-
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-
-                </div>
-
-            </section>
-
-
-            <div class="singleRecipeHr">
-                <hr>
             </div>
 
 
-            <!-- Related recipes -->
+            <div class="relatedRecipes">
 
-            <section class="relatedRecipesSection">
+                <!-- Bruger custom query til at hente related recipes -->
+                <?php
 
-                <div class="relatedSectionHeader">
+                $relatedRecipes = new WP_Query(array(
+                    'post_type' => 'recipe',
+                    'posts_per_page' => 4,
+                    'post__not_in' => array(get_the_ID())
+                ));
 
-                    <h2 class="relatedRecipesTitle">
-                        Related Recipes
-                    </h2>
+                while ($relatedRecipes->have_posts()) {
 
-                    <a
-                        href="<?php echo get_post_type_archive_link('recipe'); ?>"
-                        class="seeAllButton"
-                    >
-                        See all recipes
-                    </a>
+                    $relatedRecipes->the_post();
 
-                </div>
+                    // Henter acf felt time, så det indsættes i vores html
+                    $relatedTime = get_field('time');
+
+                ?>
+
+                    <a href="<?php the_permalink(); ?>" class="recipeCard">
+
+                        <img
+                            class="recipeCardImage"
+                            src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
+                            alt="<?php the_title(); ?>"
+                        >
 
 
-                <div class="relatedRecipes">
+                        <div class="recipeCardContent">
 
-                    <?php
+                            <h3 class="recipeCardTitle">
+                                <?php the_title(); ?>
+                            </h3>
 
-                    $relatedRecipes = new WP_Query(array(
-                        'post_type' => 'recipe',
-                        'posts_per_page' => 4,
-                        'post__not_in' => array(get_the_ID())
-                    ));
+                            <hr class="recipeCardDivider">
 
-                    if ($relatedRecipes->have_posts()) :
 
-                        while ($relatedRecipes->have_posts()) :
+                            <div class="recipeCardAuthor">
 
-                            $relatedRecipes->the_post();
-
-                            $relatedTime = get_field('time');
-
-                    ?>
-
-                            <a href="<?php the_permalink(); ?>" class="recipeCard">
+                                <p>
+                                    By <?php the_author(); ?>
+                                </p>
 
                                 <img
-                                    class="recipeCardImage"
-                                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>"
-                                    alt="<?php the_title(); ?>"
+                                    class="recipeCardChefIcon"
+                                    src="<?php echo get_theme_file_uri('/img/chef_hat_24dp_EDEDEA_FILL0_wght400_GRAD0_opsz24.svg'); ?>"
+                                    alt=""
                                 >
 
-
-                                <div class="recipeCardContent">
-
-                                    <h3 class="recipeCardTitle">
-                                        <?php the_title(); ?>
-                                    </h3>
-
-                                    <hr class="recipeCardDivider">
+                            </div>
 
 
-                                    <div class="recipeCardAuthor">
+                            <div class="recipeCardTime">
 
-                                        <p>
-                                            By <?php the_author(); ?>
-                                        </p>
+                                <i class="fa-regular fa-clock"></i>
 
-                                        <img
-                                            class="recipeCardChefIcon"
-                                            src="<?php echo get_theme_file_uri('/img/chef_hat_24dp_EDEDEA_FILL0_wght400_GRAD0_opsz24.svg'); ?>"
-                                            alt=""
-                                        >
+                                <p>
+                                    <?php echo $relatedTime['total_time']; ?>
+                                </p>
 
-                                    </div>
+                            </div>
 
 
-                                    <div class="recipeCardTime">
+                            <div class="recipeCardActions">
 
-                                        <i class="fa-regular fa-clock"></i>
+                                <div class="recipeCardSave">
 
-                                        <p>
-                                            <?php echo $relatedTime['total_time']; ?>
-                                        </p>
+                                    <i class="fa-regular fa-bookmark"></i>
 
-                                    </div>
-
-
-                                    <div class="recipeCardActions">
-
-                                        <div class="recipeCardSave">
-
-                                            <i class="fa-regular fa-bookmark"></i>
-
-                                            <p>
-                                                Save recipe
-                                            </p>
-
-                                        </div>
-
-                                        <div class="recipeCardView">
-                                            View recipe
-                                        </div>
-
-                                    </div>
+                                    <p>
+                                        Save recipe
+                                    </p>
 
                                 </div>
 
-                            </a>
+                                <div class="recipeCardView">
+                                    View recipe
+                                </div>
 
-                    <?php
+                            </div>
 
-                        endwhile;
+                        </div>
 
-                        wp_reset_postdata();
+                    </a>
 
-                    endif;
+                <?php } ?>
 
-                    ?>
+                <?php
+                // Nulstiller post data efter custom query
+                wp_reset_postdata();
+                ?>
 
-                </div>
+            </div>
 
-            </section>
+        </section>
 
 
-            <div class="singleRecipeHr">
-                <hr>
+        <div class="singleRecipeHr">
+            <hr>
+        </div>
+
+
+        <section class="commentSection" id="comments">
+
+            <div class="commentsHeader">
+
+                <i class="fa-regular fa-message"></i>
+
+                <h2>
+                    Comments
+                </h2>
+
+                <p>
+                    15 Comments
+                </p>
+
             </div>
 
 
-            <section class="commentSection" id="comments">
+            <div class="commentArea">
 
-                <div class="commentsHeader">
+                <p>
+                    Max 350 characters
+                </p>
 
-                    <i class="fa-regular fa-message"></i>
+                <div class="commentInput">
 
-                    <h2>
-                        Comments
-                    </h2>
+                    <textarea maxlength="350"></textarea>
+
+                    <button>
+                        Comment
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="otherComments">
+
+
+                <div class="otherComment">
+
+                    <div class="toolCardProfile">
+
+                        <i class="fa-regular fa-circle-user"></i>
+
+                        <p>
+                            By Emma Risgaard
+                        </p>
+
+                        <div class="profileHats">
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeStamp">
+
+                        <p>
+                            20/09-2026, 16:03
+                        </p>
+
+                    </div>
+
+
+                    <hr>
+
 
                     <p>
-                        15 Comments
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                        consequatur sequi dolore recusandae. Error natus repudiandae
+                        velit et enim ullam nam excepturi nulla.
+                    </p>
+
+
+                    <p class="reply">
+                        Reply
                     </p>
 
                 </div>
 
 
-                <div class="commentArea">
+                <div class="otherComment">
+
+                    <div class="toolCardProfile">
+
+                        <i class="fa-regular fa-circle-user"></i>
+
+                        <p>
+                            By Emma Risgaard
+                        </p>
+
+                        <div class="profileHats">
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeStamp">
+
+                        <p>
+                            20/09-2026, 16:03
+                        </p>
+
+                    </div>
+
+
+                    <hr>
+
 
                     <p>
-                        Max 350 characters
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                        consequatur sequi dolore recusandae. Error natus repudiandae
+                        velit et enim ullam nam excepturi nulla.
                     </p>
 
-                    <div class="commentInput">
 
-                        <textarea maxlength="350"></textarea>
-
-                        <button>
-                            Comment
-                        </button>
-
-                    </div>
+                    <p class="reply">
+                        Reply
+                    </p>
 
                 </div>
 
 
-                <div class="otherComments">
+                <div class="otherComment">
 
+                    <div class="toolCardProfile">
 
-                    <div class="otherComment">
-
-                        <div class="toolCardProfile">
-
-                            <i class="fa-regular fa-circle-user"></i>
-
-                            <p>
-                                By Emma Risgaard
-                            </p>
-
-                            <div class="profileHats">
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="timeStamp">
-
-                            <p>
-                                20/09-2026, 16:03
-                            </p>
-
-                        </div>
-
-
-                        <hr>
-
+                        <i class="fa-regular fa-circle-user"></i>
 
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                            consequatur sequi dolore recusandae. Error natus repudiandae
-                            velit et enim ullam nam excepturi nulla.
+                            By Emma Risgaard
                         </p>
 
+                        <div class="profileHats">
 
-                        <p class="reply">
-                            Reply
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                            <img
+                                class="Recipe-card-icon-cook"
+                                src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
+                                alt=""
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeStamp">
+
+                        <p>
+                            20/09-2026, 16:03
                         </p>
 
                     </div>
 
 
-                    <div class="otherComment">
-
-                        <div class="toolCardProfile">
-
-                            <i class="fa-regular fa-circle-user"></i>
-
-                            <p>
-                                By Emma Risgaard
-                            </p>
-
-                            <div class="profileHats">
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                            </div>
-
-                        </div>
+                    <hr>
 
 
-                        <div class="timeStamp">
-
-                            <p>
-                                20/09-2026, 16:03
-                            </p>
-
-                        </div>
-
-
-                        <hr>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Eos soluta mollitia blanditiis magni reiciendis qui sapiente
+                        consequatur sequi dolore recusandae. Error natus repudiandae
+                        velit et enim ullam nam excepturi nulla.
+                    </p>
 
 
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                            consequatur sequi dolore recusandae. Error natus repudiandae
-                            velit et enim ullam nam excepturi nulla.
-                        </p>
-
-
-                        <p class="reply">
-                            Reply
-                        </p>
-
-                    </div>
-
-
-                    <div class="otherComment">
-
-                        <div class="toolCardProfile">
-
-                            <i class="fa-regular fa-circle-user"></i>
-
-                            <p>
-                                By Emma Risgaard
-                            </p>
-
-                            <div class="profileHats">
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                                <img
-                                    class="Recipe-card-icon-cook"
-                                    src="<?php echo get_theme_file_uri('/img/chef-hat.svg'); ?>"
-                                    alt=""
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="timeStamp">
-
-                            <p>
-                                20/09-2026, 16:03
-                            </p>
-
-                        </div>
-
-
-                        <hr>
-
-
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Eos soluta mollitia blanditiis magni reiciendis qui sapiente
-                            consequatur sequi dolore recusandae. Error natus repudiandae
-                            velit et enim ullam nam excepturi nulla.
-                        </p>
-
-
-                        <p class="reply">
-                            Reply
-                        </p>
-
-                    </div>
+                    <p class="reply">
+                        Reply
+                    </p>
 
                 </div>
 
-            </section>
+            </div>
 
         </section>
-                </main>
-    <?php endwhile; ?>
 
-<?php endif; ?>
+    </section>
 
+</main>
+
+<?php } ?>
 
 <?php get_footer(); ?>

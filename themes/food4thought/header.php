@@ -1,3 +1,5 @@
+<!-- header som indsættes med php på alle sider -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +7,19 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>	FOOD4THOUGHT</title>
+
+	<!-- Indsætter logo som icon -->
 <link rel="icon" type="image/png" href="<?php echo get_theme_file_uri('/img/F4Ticon.png'); ?>">
+
+	<!-- Henter Google font -->
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
 	</style>
 
+	<!-- Henter Font Awesome ikoner -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+	<!-- Giver WordPress mulighed for at indsætte funktioner i head -->
 	<?php wp_head(); ?>
 
 </head>
@@ -20,10 +28,12 @@
 
 <header>
 
+	<!-- Logo som linker til forsiden -->
 	<h1 class="logo">
 		<a href="<?php echo home_url(); ?>">FOOD4THOUGHT</a>
 	</h1>
 
+	<!-- Global navigation -->
 	<ul class="globalNav">
 
 	<li>
@@ -57,6 +67,7 @@
 
 </ul>
 
+	<!-- Search og login ikoner -->
 	<div class="loginSearchCircles">
 
 		<a href="#">
