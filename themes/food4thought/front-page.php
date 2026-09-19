@@ -62,7 +62,7 @@
 
 		<!-- Bruger custom query til at hente recipes og få dem vist med vores html cards -->
 		<?php
-
+// Henter de nyeste 5 recipes (ønske om kun at hente recipes fra professionelle kokke)
 		$professionalRecipes = new WP_Query(array(
 			'post_type' => 'recipe',
 			'posts_per_page' => 5
@@ -76,7 +76,7 @@
 			$time = get_field('time');
 
 		?>
-
+<!-- for hver recipe laves et card med følgende html -->
 				<a href="<?php the_permalink(); ?>" class="recipeCard">
 
 					<img
@@ -146,7 +146,7 @@
 </section>
 
 
-<!-- Recipe categories section -->
+<!-- Recipe category circle section -->
 <div class="circleSectionHeader">
 
 	<h2 class="relatedRecipesTitle">
@@ -159,7 +159,7 @@
 
 </div>
 
-
+<!-- recipe circles med styling ligesom tool circles -->
 <section class="toolCategories">
 
 	<a href="<?php echo get_post_type_archive_link('recipe'); ?>" class="toolCategori">
@@ -266,7 +266,7 @@
 			$tools->the_post();
 
 		?>
-
+<!-- For hvert tool oprettes et card med følgende html -->
 				<a href="<?php the_permalink(); ?>" class="toolCard">
 
 					<img
@@ -359,7 +359,7 @@
 </section>
 
 
-<!-- Tool categories section -->
+<!-- Tool category circle section -->
 <div class="circleSectionHeader">
 
 	<h2 class="relatedRecipesTitle">
